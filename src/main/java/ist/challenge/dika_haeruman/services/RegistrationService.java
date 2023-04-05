@@ -1,11 +1,9 @@
 package ist.challenge.dika_haeruman.services;
 
-import ist.challenge.dika_haeruman.DTO.UserDTO;
-import ist.challenge.dika_haeruman.models.RegistrationResponse;
 import ist.challenge.dika_haeruman.models.User;
+import ist.challenge.dika_haeruman.models.dto.UserDTO;
+import ist.challenge.dika_haeruman.utils.exception.UserIsAlreadyRegisteredException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,17 +14,15 @@ public class RegistrationService {
     @Autowired
     UserService userService;
 
-    public ResponseEntity registUser(UserDTO userDTO) {
-        List<User> listUser = userService.getAllUser();
+    public void save(UserDTO userDTO) throws Exception {
+        List<User> listUser = userService.getUser();
 
         for(User user: listUser) {
             if(user.getUsername().equals(userDTO.getUsername())) {
-                return new ResponseEntity("Username sudah terpakai", HttpStatus.CONFLICT);
+                throw new UserIsAlreadyRegisteredException();
             }
         }
 
-        userService.createUser(userDTO);
-
-        return new ResponseEntity("User berhasil dibuat", HttpStatus.CREATED);
+        userService.saveUser(userDTO);
     }
 }

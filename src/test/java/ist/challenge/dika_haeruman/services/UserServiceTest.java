@@ -23,6 +23,6 @@ public class UserServiceTest {
 
     @Test
     public void createUser_ShouldSuccessfullyCreate1User_WhenInputValidUser() {
-        Assert.assertEquals(1, userService.getAllUser().size());
+        Assert.assertEquals(1, userService.getUser().size());
     }
 }

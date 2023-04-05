@@ -1,6 +1,5 @@
-package ist.challenge.dika_haeruman.DTO;
+package ist.challenge.dika_haeruman.models.dto;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import io.swagger.annotations.ApiModelProperty;
 
 public class UserDTO {
