@@ -14,7 +14,7 @@ public class RegistrationService {
     @Autowired
     UserService userService;
 
-    public void save(UserDTO userDTO) throws Exception {
+    public void save(UserDTO userDTO) throws UserIsAlreadyRegisteredException {
         List<User> listUser = userService.getUser();
 
         for(User user: listUser) {

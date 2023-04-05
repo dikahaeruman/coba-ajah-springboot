@@ -1,5 +1,7 @@
 package ist.challenge.dika_haeruman.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 
 @Entity
@@ -9,7 +11,9 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
+    @NotNull
     private String username;
+    @NotNull
     private String password;
 
     public User(String username, String password) {
